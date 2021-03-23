@@ -1,0 +1,66 @@
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+	<style>body { background-color: #202225; color: #eeeeee;}
+.tab {
+ border-radius: 15px;
+ overflow: hidden;
+ background-color: #36393f;
+}
+
+#input {
+    background-color : #37393f;
+    color: #eeeeee;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+button {
+    background-color : #37393f;
+    color: #eeeeee;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+
+}
+
+a {
+  color: #5f86b7;
+  text-shadow: 0px 0px;
+}
+
+#output {
+text-align: center
+}
+
+#app {
+background-color: #26282d;
+}
+</style>
+	<main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+		<div id="app" class="max-w-full md:max-w-lg w-full p-10 rounded-xl shadow">	
+		<p class="mt-6 text-center text-3xl leading-9 font-semibold text-900">JS Code minifier</p>
+		<br>
+			<textarea type="text" v-model="input" id="input" class="rounded-md" placeholder="What's your script?"></textarea>
+			<br>
+				<p id="output">{{output}}</p>
+				<script src="https://unpkg.com/vue@next"></script>
+				<script>
+  cod = {
+  data() {
+    return {
+      input: '',
+      output: 'eval(unescape(escape(``.replace(/u(..)/g,"$1%")))'
+    }
+  },
+  watch: {
+     input() {
+       a = this.input
+       this.output = 'eval(unescape(escape(`'+(a.length%2?a+' ':a).split``.map(i=>i.charCodeAt(0).toString(16)).map((i,j,k)=>j%2?'':String.fromCharCode('0x'+i+k[j+1])).join``+'`.replace(/u(..)/g,"$1%")))'
+     }
+  }
+}
+
+Vue.createApp(cod).mount('#app')
+  </script>
+			</div>
+
