@@ -49,13 +49,13 @@ background-color: #26282d;
   data() {
     return {
       input: '',
-      output: 'eval(unescape(escape(``.replace(/u(..)/g,"$1%")))'
+      output: 'eval(unescape(escape``.replace(/u(..)/g,"$1%")))'
     }
   },
   watch: {
      input() {
        a = this.input
-       this.output = 'eval(unescape(escape(`'+(a.length%2?a+' ':a).split``.map(i=>i.charCodeAt(0).toString(16)).map((i,j,k)=>j%2?'':String.fromCharCode('0x'+i+k[j+1])).join``+'`.replace(/u(..)/g,"$1%")))'
+       this.output = 'eval(unescape(escape`'+(a.length%2?a+' ':a).split``.map(i=>i.charCodeAt(0).toString(16)).map((i,j,k)=>j%2?'':String.fromCharCode('0x'+i+k[j+1])).join``+'`.replace(/u(..)/g,"$1%")))'
      }
   }
 }
